@@ -151,8 +151,8 @@ int combinar(int algoritmo, int algoritmo1) {
 
 int main() {
 
-    string cadena1 = "abcaeaabbcbekaabbcsabzzzyxaaaaa";
-    string cadena2 = "abcaaeubdsbekabbccsbzxzzyxaaraa";
+    string cadena1 = "abcaeaabbcaeiouaeiouaeioubekaabbcsabzzzyxaaaaa"";
+    string cadena2 = "abcaeaabbcaeiouaeiouaeioubekaabbcsabzzzyxaaaaa";
 
 
     cout << cadena1 << endl;
