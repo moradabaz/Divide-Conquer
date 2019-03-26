@@ -2,10 +2,7 @@
 #include <vector>
 #include <random>
 #include <string>
-#include <functional> //for std::function
-#include <algorithm>  //for std::generate_n
 #include <map>
-#include <ctime>
 #include <list>
 
 using namespace std;
@@ -148,7 +145,6 @@ int algoritmo_2(string cadena1, string cadena2) {
     if (es_combinable(cadena_media_A_1, cadena_media_A_2)) {
         if (parte_mas_izquierda == 0) {
             int res2 = algoritmo_2(cadena_media_A_2, cadena_media_B_2);
-
             return res1 + res2;
         } else {
             return res1;
@@ -159,7 +155,7 @@ int algoritmo_2(string cadena1, string cadena2) {
     }
 }
 
-int algoritmo_general(string cadena1, string cadena2) {
+int  algoritmo_general(string cadena1, string cadena2) {
     int resultado = 0;
     int longitud = (int) cadena1.size();
     if (longitud <= 1) return solucion_directa(cadena1, cadena2);
@@ -194,8 +190,8 @@ int main() {
     // keeeee ekaakg
     // keeeee ekaakg
 
-    string cadena1 =  "abcaeaabbcbekaabbcsabzzzyxaaaaa";       // 5 + 4 + 2
-    string cadena2 =  "abcaeaabbcbekaabbcsabzzzyxaraaa";
+    string cadena1 =  "hjggkkghkgha";       // 5 + 4 + 2
+    string cadena2 =  "hjggkkghkgha";
 
     cout << cadena1 << endl;
     cout << cadena2 << endl;
