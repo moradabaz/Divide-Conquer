@@ -61,9 +61,9 @@ int pos_media(int pos_inicial, int pos_final) {
 int * solucion_directa(string cadena1, string cadena2, int pos_inicial, int pos_final) {
     int * res = new int[3];
     res[0] = 0;
-    res[1] = 0;
-    res[2] = 0;
-    if (cadena1.length() == 1) {
+    res[1] = pos_inicial;
+    res[2] = pos_inicial;
+    if (cadena1.length() <= 1) {
         if (es_vocal(cadena1[0]) && es_vocal(cadena2[0])) {
             res[0] = 1;
             res[1] = pos_inicial;
@@ -110,8 +110,8 @@ int * calcular_parte_derecha(string cadena1, string cadena2, int pos_inicial, in
     string cadena_media_A_2 = cadena1.substr((unsigned long) (longitud / 2), (unsigned long) longitud);
     string cadena_media_B_2 = cadena2.substr((unsigned long) (longitud / 2), (unsigned long) longitud);
 
-    int * segunda_parte = calcular_parte_derecha(cadena_media_A_2, cadena_media_B_2, pos_inicial, pos_final);
-
+    int * segunda_parte = calcular_parte_derecha(cadena_media_A_2, cadena_media_B_2, pos_media, pos_final);
+    cout << segunda_parte[1] << endl;
     if (hay_union_de_vocales(cadena_media_A_1, cadena_media_A_2)) {
         if (parte_mas_derecha == 0) {
             int * primera_parte = calcular_parte_derecha(cadena_media_A_1, cadena_media_B_1, pos_inicial, pos_media);
@@ -151,7 +151,7 @@ int * calcular_parte_izquierda(string cadena1, string cadena2, int pos_inicial, 
         if (parte_mas_izquierda == 0) {
             int * res2 = calcular_parte_izquierda(cadena_media_A_2, cadena_media_B_2, pos_media, pos_final);
             resultado[0] = res1[0] + res2[0];
-            resultado[1] = res1[1];
+            resultado[1] = res2[1];
             resultado[2] = res2[1];
         } else {
             resultado[0] = res1[0];
@@ -172,6 +172,8 @@ int * algoritmo_general(string cadena1, string cadena2, int pos_inicial, int pos
     resultado[0] = 0;
     resultado[1] = 0;
     resultado[2] = 0;
+
+
     int longitud = (int) cadena1.size();
     if (longitud <= 1) return solucion_directa(cadena1, cadena2, pos_inicial, pos_final);
     int pos_medio = pos_media(pos_inicial, pos_final);
@@ -214,11 +216,11 @@ int * algoritmo_general(string cadena1, string cadena2, int pos_inicial, int pos
             resultado[2] = parte_izquierda[1];
         }
     }
-
     return resultado;
 }
 
 /*
+
 int main() {
 
     string cadena1 =  "eeiioouuaaiiabcaeaabbcbekaabbcaeiouaesabzzzyxaaaaa";       // 5 + 4 + 2
@@ -231,4 +233,5 @@ int main() {
 
     return 0;
 }
+
 */
